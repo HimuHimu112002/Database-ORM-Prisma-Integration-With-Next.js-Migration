@@ -9,3 +9,63 @@ datasource db {
   provider = "mysql"
   url      = env("DATABASE_URL")
 }
+
+model User{
+  id Int @id @default(autoincrement())
+  col1 Int @db.UnsignedInt
+  email String @unique
+  name String
+  roll String
+
+  col2 BigInt
+  col3 BigInt @db.UnsignedBigInt //length 20
+
+  col4 Int @db.SmallInt
+  col5 Int @db.UnsignedSmallInt
+
+  col6 Int @db.MediumInt
+  col7 Int @db.UnsignedMediumInt
+
+  col8 Int @db.TinyInt
+  col9 Int @db.UnsignedTinyInt
+
+  col10 Decimal
+  col11 Float
+  col12 Float @db.Float
+
+  col13 BigInt @default(10)
+  col14 BigInt @unique
+
+  col15 String?
+  col16 String @default("Aktarujjaman himu")
+  col17 String @db.VarChar(100)
+
+}
+
+model DateAndTime{
+  id Int @id @default(autoincrement())
+  col1 DateTime @db.Date
+  col2 DateTime @db.DateTime()
+  col3 DateTime @db.Timestamp()
+  col4 DateTime @db.Time()
+  col5 DateTime
+}
+
+model Testboolean{
+  id Int @id @default(autoincrement())
+  col1 Boolean
+  col2 String @db.Char(100) @default("prisma")
+  
+}
+
+model BinaryTest{
+  id Int @id @default(autoincrement())
+  col1 Bytes @db.Blob
+  col2 Bytes @db.LongBlob
+  col3 Bytes @db.TinyBlob
+  col4 Bytes @db.MediumBlob
+  col5 Bytes @db.Binary(10)
+  col6 Bytes @db.Bit(10)
+  col7 Bytes @db.VarBinary(1000)
+
+}
